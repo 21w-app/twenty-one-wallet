@@ -19,7 +19,7 @@
     "@arkade-os/sdk": "^0.4.34",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@scure/bip39": "^2.2.0",
-    "@tanstack/react-query": "^5.80.7",
+    "@tanstack/react-query": "^5.101.4",
     "axios": "^1.9.0",
     "expo": "~54.0.0",
     "expo-application": "~7.0.8",
