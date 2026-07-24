@@ -22,7 +22,7 @@
     "@arkade-os/sdk": "^0.4.34",
     "@asteasolutions/zod-to-openapi": "^8.5.0",
     "@prisma/client": "^6.9.0",
-    "eventsource": "^3.0.7",
+    "eventsource": "^4.1.0",
     "express": "^5.1.0",
     "express-rate-limit": "^8.5.2",
     "pino": "^10.3.1",
