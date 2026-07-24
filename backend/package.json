@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@arkade-os/sdk": "^0.4.34",
-    "@asteasolutions/zod-to-openapi": "^8.5.0",
+    "@asteasolutions/zod-to-openapi": "^9.1.0",
     "@prisma/client": "^6.9.0",
     "eventsource": "^3.0.7",
     "express": "^5.1.0",
