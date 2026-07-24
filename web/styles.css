@@ -1,0 +1,397 @@
+:root {
+  color-scheme: dark;
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: #a3a3a3;
+  --accent: #f7931a;
+  --border: #262626;
+  --max-width: 42rem;
+  --content-padding-x: 1.5rem;
+  --home-content-width: 67.6rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 0;
+}
+
+.site-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 var(--content-padding-x);
+}
+
+.site-header-inner--home {
+  max-width: var(--home-content-width);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+}
+
+.hero-logo {
+  display: block;
+  height: 3.5rem;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.site-nav a {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem var(--content-padding-x) 4rem;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.0625rem;
+  margin: 0 0 2rem;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.125rem;
+  margin: 2rem 0 0.75rem;
+}
+
+p,
+ul {
+  margin: 0 0 1rem;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+.callout {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.callout strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.contact-card {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.875rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.hero {
+  padding-top: 1rem;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 1.125rem;
+  margin: 0 0 1rem;
+}
+
+.hero-lead {
+  font-size: clamp(0.8125rem, 2.2vw, 1.25rem);
+  line-height: 1.45;
+  margin: 0 0 2rem;
+  max-width: none;
+  white-space: nowrap;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.button {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  display: inline-block;
+  padding: 0.625rem 1rem;
+  text-decoration: none;
+}
+
+main.page-home {
+  max-width: var(--home-content-width);
+}
+
+.download {
+  margin: 0 0 2.5rem;
+}
+
+.download h2 {
+  margin-top: 0;
+}
+
+.download-hint {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 0 0 1rem;
+}
+
+.screenshots {
+  margin: 0;
+}
+
+.screenshots h2 {
+  margin-top: 0;
+}
+
+.screenshots-hint {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 0 0 1.25rem;
+}
+
+.screenshot-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(13.65rem, 1fr));
+}
+
+.screenshot-grid figure {
+  margin: 0;
+}
+
+.screenshot-thumb {
+  background: none;
+  border: 0;
+  border-radius: 1.25rem;
+  cursor: zoom-in;
+  display: block;
+  padding: 0;
+  width: 100%;
+}
+
+.screenshot-thumb:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.screenshot-grid img {
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.screenshot-grid figcaption {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  align-items: center;
+  background: rgb(0 0 0 / 92%);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1.5rem 4rem;
+  position: fixed;
+  z-index: 1000;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-figure {
+  margin: 0;
+  max-height: calc(100vh - 6rem);
+  max-width: min(28rem, 100%);
+  text-align: center;
+}
+
+.lightbox-image {
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-height: calc(100vh - 9rem);
+  max-width: 100%;
+  width: auto;
+}
+
+.lightbox-caption {
+  color: var(--text);
+  font-size: 0.9375rem;
+  margin-top: 0.75rem;
+}
+
+.lightbox-counter {
+  bottom: 1.25rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.lightbox-close,
+.lightbox-nav {
+  align-items: center;
+  background: rgb(38 38 38 / 90%);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1.75rem;
+  height: 2.75rem;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  position: absolute;
+  width: 2.75rem;
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+  border-color: var(--accent);
+}
+
+.lightbox-close:focus-visible,
+.lightbox-nav:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.lightbox-close {
+  font-size: 1.5rem;
+  right: 1rem;
+  top: 1rem;
+}
+
+.lightbox-prev {
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-next {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-nav:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+@media (max-width: 40rem) {
+  .lightbox {
+    padding: 1rem 3.25rem;
+  }
+
+  .lightbox-prev {
+    left: 0.5rem;
+  }
+
+  .lightbox-next {
+    right: 0.5rem;
+  }
+
+  .lightbox-close {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+}
+
+.button-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000000;
+  font-weight: 600;
+}

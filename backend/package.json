@@ -1,0 +1,43 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.21.0"
+  },
+  "scripts": {
+    "dev": "tsx watch server.ts",
+    "build": "prisma generate && tsx openapi/generate.ts && tsc",
+    "start": "node dist/server.js",
+    "typecheck": "prisma generate && tsc --noEmit",
+    "postinstall": "prisma generate",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:deploy": "prisma migrate deploy",
+    "openapi:generate": "tsx openapi/generate.ts",
+    "test": "node --import tsx --test test/getAppConfig.test.ts test/authChallenge.test.ts test/deviceAuthMessage.test.ts test/buildIncomingFundsPushData.test.ts test/handleSubscriptionNewVtxos.test.ts test/isStaleIndexerSubscriptionError.test.ts test/createIpRateLimit.test.ts test/api.integration.test.ts",
+    "test:integration": "node --import tsx --test test/walletSignature.integration.test.ts"
+  },
+  "dependencies": {
+    "@arkade-os/sdk": "^0.4.34",
+    "@asteasolutions/zod-to-openapi": "^8.5.0",
+    "@prisma/client": "^6.9.0",
+    "eventsource": "^3.0.7",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.5.2",
+    "pino": "^10.3.1",
+    "pino-http": "^11.0.0",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.21",
+    "@types/supertest": "^7.2.0",
+    "@types/swagger-ui-express": "^4.1.8",
+    "prisma": "^6.9.0",
+    "supertest": "^7.2.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

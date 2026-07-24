@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: Typecheck, test, lint, format
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: twentyone_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/twentyone_test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.21.0
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate OpenAPI and API client
+        run: npm run openapi:generate
+
+      - name: Check OpenAPI drift
+        run: git diff --exit-code openapi/openapi.json packages/api-client/src/generated
+
+      - name: Apply database migrations
+        run: npm run prisma:deploy -w backend
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Backend tests
+        run: npm run test:backend
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Prettier check
+        run: npm run format:check

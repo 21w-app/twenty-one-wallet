@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>21W — Simple self-custodial Bitcoin wallet</title>
+    <meta
+      name="description"
+      content="21W (Twenty One Wallet) is a simple self-custodial Bitcoin mobile wallet powered by Ark."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/gallery.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner site-header-inner--home">
+        <a class="brand" href="/">
+          <img
+            class="brand-logo"
+            src="/assets/logo-header.png"
+            alt="21W"
+            width="109"
+            height="40"
+          />
+        </a>
+        <nav class="site-nav" aria-label="Site">
+          <a href="/privacy-policy/">Privacy</a>
+          <a href="/support/">Support</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="hero page-home">
+      <p class="tagline">
+        Simple self-custodial Bitcoin wallet. Powered by Ark.
+      </p>
+      <p class="hero-lead">
+        Fund your wallet with Lightning and spend sats via Ark.
+      </p>
+
+      <section class="download" aria-labelledby="download-heading">
+        <h2 id="download-heading">Download</h2>
+        <p class="download-hint">Try 21W on your device.</p>
+        <div class="button-row">
+          <a
+            class="button button-primary"
+            href="https://testflight.apple.com/join/dQ5jRSv1"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            iOS (TestFlight)
+          </a>
+          <a
+            class="button"
+            href="https://expo.dev/artifacts/eas/mn89aLO-QT3dfVi69Jcflh4ioiFHO3qc9VhTjMe-fNs.apk"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Android (APK)
+          </a>
+        </div>
+      </section>
+
+      <section class="screenshots" aria-labelledby="screenshots-heading">
+        <h2 id="screenshots-heading">Preview</h2>
+        <p class="screenshots-hint">
+          Tap any screenshot to enlarge and browse.
+        </p>
+        <div class="screenshot-grid" data-screenshot-gallery>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Home screenshot"
+            >
+              <img
+                src="/assets/screenshots/home.png"
+                alt="21W home screen with balance, receive and send actions, and recent activity"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Home — balance &amp; activity</figcaption>
+          </figure>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Activity screenshot"
+            >
+              <img
+                src="/assets/screenshots/activity.png"
+                alt="21W activity screen listing sent, funded, and received transactions"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Activity — transaction history</figcaption>
+          </figure>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Fund screenshot"
+            >
+              <img
+                src="/assets/screenshots/fund.png"
+                alt="21W fund screen to add sats via Lightning invoice"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Fund — Lightning invoice</figcaption>
+          </figure>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Receive screenshot"
+            >
+              <img
+                src="/assets/screenshots/receive.png"
+                alt="21W receive screen with Ark address and QR code"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Receive — Ark address</figcaption>
+          </figure>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Send screenshot"
+            >
+              <img
+                src="/assets/screenshots/send.png"
+                alt="21W send screen to enter recipient address and amount in sats"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Send — address &amp; amount</figcaption>
+          </figure>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Withdraw screenshot"
+            >
+              <img
+                src="/assets/screenshots/withdraw.png"
+                alt="21W withdraw screen to send sats to a Bitcoin on-chain address"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Withdraw — on-chain</figcaption>
+          </figure>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Withdraw confirmation screenshot"
+            >
+              <img
+                src="/assets/screenshots/withdraw-confirmation.png"
+                alt="21W withdraw confirmation showing amount withdrawn in sats"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Withdraw confirmation</figcaption>
+          </figure>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Contacts screenshot"
+            >
+              <img
+                src="/assets/screenshots/contacts.png"
+                alt="21W address book with saved contacts"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Contacts — address book</figcaption>
+          </figure>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Contact detail screenshot"
+            >
+              <img
+                src="/assets/screenshots/contact-detail.png"
+                alt="21W contact detail screen with send and delete actions"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Contact detail</figcaption>
+          </figure>
+          <figure>
+            <button
+              type="button"
+              class="screenshot-thumb"
+              data-gallery-index
+              aria-label="Open Settings screenshot"
+            >
+              <img
+                src="/assets/screenshots/settings.png"
+                alt="21W settings screen with language, notifications, and security options"
+                loading="lazy"
+                width="472"
+                height="1024"
+              />
+            </button>
+            <figcaption>Settings — security &amp; notifications</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="screenshot-lightbox"
+      class="lightbox"
+      hidden
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Screenshot preview"
+    >
+      <button type="button" class="lightbox-close" aria-label="Close gallery">
+        ×
+      </button>
+      <button
+        type="button"
+        class="lightbox-nav lightbox-prev"
+        aria-label="Previous screenshot"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        class="lightbox-nav lightbox-next"
+        aria-label="Next screenshot"
+      >
+        ›
+      </button>
+      <figure class="lightbox-figure">
+        <img class="lightbox-image" alt="" />
+        <figcaption class="lightbox-caption"></figcaption>
+      </figure>
+      <p class="lightbox-counter" aria-live="polite"></p>
+    </div>
+  </body>
+</html>

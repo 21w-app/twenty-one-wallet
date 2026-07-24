@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — 21W</title>
+    <meta
+      name="description"
+      content="Privacy policy for 21W (Twenty One Wallet), a self-custodial Bitcoin mobile wallet."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="/">
+          <img
+            class="brand-logo"
+            src="/assets/logo-header.png"
+            alt="21W"
+            width="109"
+            height="40"
+          />
+        </a>
+        <nav class="site-nav" aria-label="Site">
+          <a href="/privacy-policy/" aria-current="page">Privacy</a>
+          <a href="/support/">Support</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <h1>Privacy Policy</h1>
+      <p class="lead">Twenty One Wallet (21W)</p>
+      <p class="meta">Last updated: July 14, 2026</p>
+
+      <p>
+        21W is a self-custodial Bitcoin mobile wallet. This policy describes how
+        the app handles information. We designed 21W so you can use it without
+        creating an account with us.
+      </p>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>No account is required to use 21W.</li>
+        <li>We do not run analytics or advertising in the app.</li>
+        <li>
+          We do not store your recovery phrase or private keys on 21W servers.
+        </li>
+        <li>
+          Your recovery phrase stays on your device and is not sent to us.
+        </li>
+        <li>
+          An optional 21W backend can register your wallet for payment
+          notifications only if you turn that on in Settings.
+        </li>
+      </ul>
+
+      <h2>Information we do not collect</h2>
+      <p>21W does not ask you to sign up and does not collect:</p>
+      <ul>
+        <li>Your name, email address, or phone number inside the app</li>
+        <li>Your recovery phrase or private keys</li>
+        <li>Contacts from your phone's system address book</li>
+        <li>Precise location</li>
+        <li>
+          Usage analytics, crash reporting tied to your identity, or advertising
+          identifiers
+        </li>
+      </ul>
+
+      <h2>Data stored on your device</h2>
+      <p>
+        Wallet data is stored locally on your phone. Depending on how you use
+        the app, this can include:
+      </p>
+      <ul>
+        <li>
+          <strong>Recovery phrase</strong> — stored in the device secure storage
+          (iOS Keychain / Android Keystore) with authentication required when
+          supported.
+        </li>
+        <li>
+          <strong>Wallet state</strong> — Ark wallet and Lightning swap records
+          in a local SQLite database on the device.
+        </li>
+        <li>
+          <strong>Preferences</strong> — non-sensitive settings such as
+          biometric unlock preference, language choice, notification preference,
+          and UI reminders, stored locally.
+        </li>
+        <li>
+          <strong>Saved contacts</strong> — names and Bitcoin or Ark addresses
+          you save in the app, stored locally.
+        </li>
+        <li>
+          <strong>Cached display data</strong> — recent balance or activity
+          preview data cached locally for faster loading.
+        </li>
+      </ul>
+      <p>
+        If you delete the wallet in Settings, local wallet data managed by the
+        app is removed from the device. Anyone with your recovery phrase can
+        restore the wallet elsewhere.
+      </p>
+
+      <h2>Network connections</h2>
+      <p>
+        To send and receive Bitcoin, the app connects directly from your device
+        to public network services and, if you opt in, a small 21W API for push
+        notifications. We do not proxy your wallet traffic through a 21W server.
+        Current connections include:
+      </p>
+      <ul>
+        <li>
+          <strong>Ark network</strong> (<code>arkade.computer</code>) — wallet
+          operations on Bitcoin mainnet.
+        </li>
+        <li>
+          <strong>Bitcoin block explorer API</strong>
+          (<code>mempool.space</code>) — on-chain Bitcoin data used for funding
+          and withdrawals.
+        </li>
+        <li>
+          <strong>Lightning and on-chain swap services</strong> — accessed
+          through the Ark/Boltz libraries when you fund from Lightning or
+          on-chain Bitcoin, withdraw to Lightning, or withdraw on-chain.
+        </li>
+        <li>
+          <strong>Fiat exchange rate</strong> (<code>api.coingecko.com</code>) —
+          optional display of an approximate local-currency equivalent. Requests
+          are initiated from your device and are not linked to a 21W account.
+        </li>
+        <li>
+          <strong>21W API</strong> (<code>api.21w.app</code>) — optional, only
+          when you enable payment notifications in Settings. The app registers
+          your wallet's public receive identifiers, platform, app version, and
+          an Expo push token using a wallet-signed request. We do not receive
+          your recovery phrase or private keys. You can disable notifications
+          and revoke registration in Settings.
+        </li>
+        <li>
+          <strong>Expo push delivery</strong> — used to deliver notification
+          payloads when the optional 21W notification service above is enabled.
+        </li>
+      </ul>
+      <p>
+        Those services receive network requests needed to perform the action you
+        request (for example, broadcasting or monitoring transactions). Their
+        own privacy practices apply to data they process.
+      </p>
+
+      <h2>Device permissions</h2>
+      <ul>
+        <li>
+          <strong>Biometrics / device authentication</strong> — used to protect
+          sensitive actions such as revealing your recovery phrase, confirming
+          sends, or unlocking the app when you enable that option.
+        </li>
+        <li>
+          <strong>Camera</strong> — used only when you scan a payment QR code.
+          Images are processed on device for decoding and are not uploaded to
+          21W.
+        </li>
+        <li>
+          <strong>Notifications</strong> — optional; used only if you enable
+          payment notifications in Settings to alert you about incoming funds or
+          VTXO expiry reminders.
+        </li>
+      </ul>
+
+      <h2>Your responsibilities</h2>
+      <p>
+        21W is experimental software. You are responsible for securing your
+        device, backing up your recovery phrase offline, and verifying addresses
+        and amounts before sending Bitcoin. We cannot recover a lost recovery
+        phrase.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        21W is not directed at children under 13, and we do not knowingly
+        collect personal information from children.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        We may update this page when the app changes. The “Last updated” date at
+        the top will change when we do. Continued use of the app after an update
+        means you accept the revised policy.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy:
+        <a href="mailto:support@21w.app">support@21w.app</a>
+      </p>
+      <p>
+        For help using the app, see the
+        <a href="/support/">support page</a>.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">21W</a> · <a href="/support/">Support</a></p>
+    </footer>
+  </body>
+</html>

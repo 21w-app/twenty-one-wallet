@@ -1,0 +1,81 @@
+# Dependencies
+node_modules/
+.venv-branding/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+ios/
+android/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.ipa
+*.apk
+*.aab
+
+# Metro
+.metro-health-check*
+
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# Local env (keep *.example tracked)
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage/
+
+# Push / Firebase / Google (never commit real files)
+google-services.json
+GoogleService-Info.plist
+**/google-services.json
+**/GoogleService-Info.plist
+AuthKey_*.p8
+**/AuthKey_*.p8
+
+# Vercel local
+.vercel/
+
+# AI workflow know-how (private — do not publish)
+AGENTS.md
+CODING_RULES.md
+LESSONS_LEARNED.md
+.cursor/
+
+# Local ops / agent coordination (not for public export)
+CURRENT.md
+TASKS.md
+ACTIVITY.md
+
+# Local product / process docs (source transparency export omits these)
+ROADMAP.md
+DECISIONS.md
+OPEN_QUESTIONS.md
+REQUIRED_FROM_OWNER.md
+PRODUCT_SPEC.md
+TECH_STACK.md
+UI_UX_GUIDELINES.md
+docs/OPEN_SOURCE_CUTOVER.md
+docs/templates/
+apps/mobile/RELEASE.md
+apps/mobile/PUSH_NOTIFICATIONS.md
