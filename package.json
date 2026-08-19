@@ -1,0 +1,25 @@
+{
+  "name": "21w",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/mobile",
+    "backend",
+    "packages/api-client"
+  ],
+  "scripts": {
+    "start": "npm run start -w mobile",
+    "android": "npm run android -w mobile",
+    "ios": "npm run ios -w mobile",
+    "typecheck": "npm run typecheck -w mobile && npm run typecheck -w backend && npm run typecheck -w @21w/api-client",
+    "lint": "npm run lint -w mobile",
+    "test:backend": "npm run test -w backend",
+    "openapi:generate": "npm run openapi:generate -w backend && npm run generate -w @21w/api-client && prettier --write openapi/openapi.json packages/api-client/src/generated",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "prettier": "^3.5.3"
+  }
+}

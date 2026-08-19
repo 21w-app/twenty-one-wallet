@@ -1,0 +1,436 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "21W API",
+    "version": "1.0.0",
+    "description": "Non-custodial backend for Twenty One Wallet"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development"
+    },
+    {
+      "url": "https://your-api.example.com",
+      "description": "Deployed API (replace with your host)"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "HealthStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["ok", "degraded"]
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "database": {
+            "type": "string",
+            "enum": ["up", "down"]
+          }
+        },
+        "required": ["status", "timestamp", "database"]
+      },
+      "AppConfig": {
+        "type": "object",
+        "properties": {
+          "minimumAppVersion": {
+            "type": "string"
+          },
+          "minimumIosBuild": {
+            "type": "string",
+            "nullable": true
+          },
+          "minimumAndroidBuild": {
+            "type": "string",
+            "nullable": true
+          },
+          "iosStoreUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "androidStoreUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "updateMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "minimumAppVersion",
+          "minimumIosBuild",
+          "minimumAndroidBuild",
+          "iosStoreUrl",
+          "androidStoreUrl",
+          "updateMessage"
+        ]
+      },
+      "AuthChallengeResponse": {
+        "type": "object",
+        "properties": {
+          "challengeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "message": {
+            "type": "string"
+          },
+          "expiresAtSeconds": {
+            "type": "integer"
+          }
+        },
+        "required": ["challengeId", "message", "expiresAtSeconds"]
+      },
+      "ApiErrorBody": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        },
+        "required": ["error"]
+      },
+      "SyncDeviceResponse": {
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": ["deviceId"]
+      },
+      "SyncDeviceRequest": {
+        "type": "object",
+        "properties": {
+          "challengeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "signature": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signature_version": {
+            "type": "string",
+            "enum": ["device-auth-v1"]
+          },
+          "vtxo_script_hex": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ark_static_address": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signer_taproot_address": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signer_xonly_public_key": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{64}$"
+          },
+          "deviceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "expo_push_token": {
+            "type": "string",
+            "minLength": 1
+          },
+          "platform": {
+            "$ref": "#/components/schemas/Platform"
+          },
+          "app_version": {
+            "type": "string"
+          },
+          "native_build": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "challengeId",
+          "signature",
+          "signature_version",
+          "vtxo_script_hex",
+          "ark_static_address",
+          "signer_taproot_address",
+          "signer_xonly_public_key",
+          "expo_push_token",
+          "platform"
+        ]
+      },
+      "Platform": {
+        "type": "string",
+        "enum": ["ios", "android"]
+      },
+      "RevokeDeviceRequest": {
+        "type": "object",
+        "properties": {
+          "challengeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "signature": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signature_version": {
+            "type": "string",
+            "enum": ["device-auth-v1"]
+          },
+          "vtxo_script_hex": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ark_static_address": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "challengeId",
+          "signature",
+          "signature_version",
+          "vtxo_script_hex",
+          "ark_static_address"
+        ]
+      }
+    },
+    "parameters": {}
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "getHealth",
+        "tags": ["Health"],
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthStatus"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service is degraded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/app/config": {
+      "get": {
+        "operationId": "getAppConfig",
+        "tags": ["App"],
+        "responses": {
+          "200": {
+            "description": "Minimum supported app version policy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppConfig"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/challenges": {
+      "post": {
+        "operationId": "createAuthChallenge",
+        "tags": ["Auth"],
+        "responses": {
+          "201": {
+            "description": "Wallet-signed registration challenge",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthChallengeResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many challenge requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/devices/sync": {
+      "post": {
+        "operationId": "syncDevice",
+        "tags": ["Devices"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncDeviceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Device registered or updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SyncDeviceResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many device requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/devices/{deviceId}": {
+      "delete": {
+        "operationId": "revokeDevice",
+        "tags": ["Devices"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true,
+            "name": "deviceId",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeDeviceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Device revoked"
+          },
+          "400": {
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many device requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

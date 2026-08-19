@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Platform {
+  ios
+  android
+}
+
+/// Watched receive path — indexer key is vtxo_script_hex (DECISIONS.md TASK-057).
+model ArkWallet {
+  vtxo_script_hex         String    @id
+  ark_static_address      String
+  signer_taproot_address  String
+  last_funds_cursor       String?
+  last_polled_at          DateTime?
+  last_vtxo_reminder_at   DateTime?
+  earliest_expires_at_seconds BigInt?
+  created_at              DateTime  @default(now())
+  updated_at              DateTime  @updatedAt
+  devices                 Device[]
+}
+
+/// One row per app install; many devices per wallet.
+model Device {
+  id                String    @id @default(uuid()) @db.Uuid
+  vtxo_script_hex   String
+  expo_push_token   String
+  platform          Platform
+  app_version       String?
+  native_build      String?
+  last_seen_at      DateTime?
+  created_at        DateTime  @default(now())
+  updated_at        DateTime  @updatedAt
+  revoked_at        DateTime?
+  arkWallet         ArkWallet @relation(fields: [vtxo_script_hex], references: [vtxo_script_hex], onDelete: Cascade)
+
+  @@index([vtxo_script_hex])
+  @@index([expo_push_token])
+}
+
+/// One-time wallet-signed registration challenges (TASK-057).
+model AuthChallenge {
+  id                   String    @id @default(uuid()) @db.Uuid
+  message              String
+  expires_at_seconds   BigInt
+  consumed_at          DateTime?
+  created_at           DateTime  @default(now())
+
+  @@index([expires_at_seconds])
+}

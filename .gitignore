@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+.venv-branding/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+ios/
+android/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.ipa
+*.apk
+*.aab
+
+# Metro
+.metro-health-check*
+
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# Local env (keep *.example tracked)
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage/
+
+# Push / Firebase / Google (never commit real files)
+google-services.json
+GoogleService-Info.plist
+**/google-services.json
+**/GoogleService-Info.plist
+AuthKey_*.p8
+**/AuthKey_*.p8
+
+# Vercel local
+.vercel/

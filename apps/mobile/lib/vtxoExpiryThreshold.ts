@@ -1,0 +1,1 @@
+export const VTXO_EXPIRY_BANNER_THRESHOLD_MS = 3 * 24 * 60 * 60 * 1000;
