@@ -1,0 +1,5 @@
+# Nixpacks selects a Node major only. Its built-in Node 22 archive
+# (e6f23dc08d3624daab7094b701aa3954923c6bbb) still ships 22.14.0.
+# This nixpkgs commit packages nodejs_22 at 22.23.4.
+[phases.setup]
+nixpkgsArchive = "1e6783a814f109485411dbbd79e492b39243a2cc"
